@@ -6,9 +6,9 @@ let seconds = 5;
 
 timer.textContent = (hours < 10 ? "0" + hours : hours) + ":" + (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
 
-setInterval(() => {
+let timerId = setInterval(() => {
     if(hours === 0 && minutes === 0 && seconds === 0) {
-        clearInterval();
+        clearInterval(timerId);
         alert("Вы победили в конкурсе!");
         location.assign("README.mdd");
     }

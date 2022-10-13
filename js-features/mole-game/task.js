@@ -11,11 +11,13 @@ for(let i = 1; i <= 9; i++) {
         setTimeout(() => {
             if(dead.textContent == 10) {
                 alert("Вы победили!");
-                location.reload();
+                dead.textContent = 0;
+                lost.textContent = 0;
             } 
             else if (lost.textContent == 5) {
                 alert("Вы приграли!");
-                location.reload();
+                dead.textContent = 0;
+                lost.textContent = 0;
             };
             clearTimeout();
         }, 500);
