@@ -5,7 +5,10 @@ const subMenuLinks = Array.from(document.querySelectorAll(".menu_sub"))
 for(let menuLink of menuLinks) {
     menuLink.onclick = () => {
         const parent = menuLink.parentElement;
-        if(parent.querySelector(".menu_sub")) {
+        if(parent.querySelector(".menu_active")) {
+            parent.querySelector(".menu_active").classList.remove("menu_active")
+        }
+        else if (parent.querySelector(".menu_sub")) {
             for(let subMenuLink of subMenuLinks) {
                 const activeLink = subMenuLink.classList.contains("menu_active");
                 if(activeLink) {
@@ -14,7 +17,6 @@ for(let menuLink of menuLinks) {
             }
             parent.querySelector(".menu_sub").classList.add("menu_active");
             if(menuLink.closest(".menu_main")) {
-
                 return false;
             }
         }
