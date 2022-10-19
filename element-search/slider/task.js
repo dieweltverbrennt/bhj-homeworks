@@ -25,7 +25,9 @@ prevArrow.onclick = () => {
     if(currentSlide === 0) {
         index = sliderItems.length - 1;
     }
-    else index = currentSlide - 1;
+    else {
+        index = currentSlide - 1;
+    }
     setSlide(index);
 };
 
@@ -35,7 +37,9 @@ nextArrow.onclick = () => {
     if(currentSlide === sliderItems.length - 1) {
         index = 0;
     }
-    else index = currentSlide + 1;
+    else {
+        index = currentSlide + 1;
+    }
     setSlide(index);
 };
 

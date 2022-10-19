@@ -19,9 +19,8 @@ for(let menuLink of menuLinks) {
             parent.querySelector(".menu_sub").classList.add("menu_active");
             return false;
         }
-        if(menuLink.closest(".menu_main")) {
+        if(!menuLink.closest(".menu_sub")) {
             return false;
         }
     }
-
 }
