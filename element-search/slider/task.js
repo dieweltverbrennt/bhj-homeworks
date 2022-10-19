@@ -9,6 +9,8 @@ const sliderDots = Array.from(document.querySelectorAll(".slider__dot"));
 
 // выставляет активное изображение
 function setSlide(index) {
+    sliderItems[currentSlide].classList.remove("slider__item_active");
+    sliderDots[currentSlide].classList.remove("slider__dot_active");
     sliderItems[index].classList.add("slider__item_active");
     sliderDots[index].classList.add("slider__dot_active");
 }
@@ -20,8 +22,6 @@ setSlide(currentSlide);
 prevArrow.onclick = () => {
     let index;
     currentSlide = sliderItems.findIndex((item) => item.classList.contains("slider__item_active"));
-    sliderItems[currentSlide].classList.remove("slider__item_active");
-    sliderDots[currentSlide].classList.remove("slider__dot_active");
     if(currentSlide === 0) {
         index = sliderItems.length - 1;
     }
@@ -32,8 +32,6 @@ prevArrow.onclick = () => {
 nextArrow.onclick = () => {
     let index;
     currentSlide = sliderItems.findIndex((item) => item.classList.contains("slider__item_active"));
-    sliderItems[currentSlide].classList.remove("slider__item_active");
-    sliderDots[currentSlide].classList.remove("slider__dot_active");
     if(currentSlide === sliderItems.length - 1) {
         index = 0;
     }
@@ -45,8 +43,6 @@ nextArrow.onclick = () => {
 for(let i = 0; i < sliderDots.length; i++) {
     sliderDots[i].onclick = () => {
         currentSlide = sliderItems.findIndex((item) => item.classList.contains("slider__item_active"));
-        sliderItems[currentSlide].classList.remove("slider__item_active");
-        sliderDots[currentSlide].classList.remove("slider__dot_active");
         setSlide(i);
     }
 }
