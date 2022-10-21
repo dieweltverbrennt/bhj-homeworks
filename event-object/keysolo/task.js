@@ -17,13 +17,11 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+      document.addEventListener("keydown", () => {
+        const current = this.currentSymbol.textContent.toUpperCase();
+        const input = String.fromCharCode(event.keyCode);
+        input == current ? this.success() : this.fail();
+      })
   }
 
   success() {
