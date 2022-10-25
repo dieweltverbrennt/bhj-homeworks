@@ -1,8 +1,10 @@
 const reveal = Array.from(document.querySelectorAll(".reveal"));
+const viewPortHeight = window.innerHeight;
 
 function isVisible(el) {
-    const bottom = el.getBoundingClientRect();
-    if(bottom < 0) {
+    const { bottom, top} = el.getBoundingClientRect();
+    console.log(el.getBoundingClientRect());
+    if(bottom < 0 || top > viewPortHeight) {
         el.classList.remove("reveal_active");
     }
     else {
