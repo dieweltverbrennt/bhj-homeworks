@@ -11,7 +11,7 @@ products.forEach(item => {
     const productImage = item.querySelector(".product__image").getAttribute("src");
 
     quantityDec.addEventListener("click", () => {
-        if(parseInt(productValue.textContent) != 0) {
+        if(parseInt(productValue.textContent) > 1) {
             productValue.textContent = productValue.textContent = parseInt(productValue.textContent) - 1;
         }
     })
