@@ -45,3 +45,9 @@
   display: block;
   text-align: center;
 }
+
+#logout__btn {
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+}
