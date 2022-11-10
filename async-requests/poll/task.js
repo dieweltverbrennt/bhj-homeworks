@@ -5,16 +5,20 @@ const xhr = new XMLHttpRequest();
 xhr.open('GET', "https://netology-slow-rest.herokuapp.com/poll.php");
 xhr.send();
 
-xhr.addEventListener("readystatechange", () => {
+xhr.addEventListener("load", () => {
     if(xhr.readyState === xhr.DONE && xhr.status === 200) {
         const pollTitleData = JSON.parse(xhr.responseText).data.title;
         const pollAnswersData = JSON.parse(xhr.responseText).data.answers;
         pollTitle.textContent = pollTitleData;
-        for(let pollAnswer in pollAnswersData) {
-            const insertedPollAnswer = `<button class="poll__answer">${pollAnswersData[pollAnswer]}</button>`;
-            pollAnswers.insertAdjacentHTML("beforeend", insertedPollAnswer)
+        const pollFragment = new DocumentFragment();
+        for(const pollAnswer in pollAnswersData) {
+            const pollButton = document.createElement('button');
+            pollButton.classList.add("poll__answer")
+            pollButton.textContent = pollAnswersData[pollAnswer];
+            pollFragment.append(pollButton);
         }
-        const answers = Array.from(document.querySelectorAll(".poll__answer"));
-        answers.forEach((item) => item.addEventListener("click", () => alert("Спасибо, ваш голос засчитан!")))
+        pollAnswers.append(pollFragment)
     }
+    const answers = Array.from(document.querySelectorAll(".poll__answer"));
+    answers.forEach((item) => item.addEventListener("click", () => alert("Спасибо, ваш голос засчитан!")))
 })

@@ -4,7 +4,7 @@ const items = document.getElementById("items");
 const xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://netology-slow-rest.herokuapp.com');
 xhr.send();
-xhr.addEventListener("readystatechange", () => {
+xhr.addEventListener("load", () => {
     if(xhr.readyState === xhr.DONE && xhr.status === 200) {
         loader.classList.remove("loader_active");
         const exchangeRates = JSON.parse(xhr.responseText).response.Valute;
