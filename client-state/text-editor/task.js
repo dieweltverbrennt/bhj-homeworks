@@ -1,7 +1,7 @@
 const editor = document.getElementById("editor");
 const clearButton = document.getElementById("clear_button");
 
-if(localStorage) {
+if(localStorage.getItem("text")) {
     editor.value = localStorage.getItem("text");
 }
 

@@ -18,7 +18,7 @@ function logOut() {
 }
 
 function clearForm() {
-    formRows.forEach(item => item.value = "");
+    form.reset();
 }
 
 if(localStorage.getItem("id")) {
@@ -31,19 +31,14 @@ signinButton.addEventListener("click", (event) => {
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", "https://netology-slow-rest.herokuapp.com/auth.php");
+    xhr.responseType = 'json';
     xhr.onload = () => {
-        if(xhr.status === 200 && xhr.readyState === 4) {
-            const formResponse = JSON.parse(xhr.response);
-            if(formResponse.success === true) {
-                localStorage.setItem("id", formResponse.user_id);
-                logIn(formResponse.user_id);
-                // welcome.classList.add("welcome_active");
-                // signin.classList.remove("signin_active");
-                // userId.textContent = formResponse.user_id;
-            }
-            else {
-                alert("Неверный логин/пароль");
-            }
+        if(xhr.response.success === true) {
+            localStorage.setItem("id", xhr.response.user_id);
+            logIn(xhr.response.user_id);
+        }
+        else {
+            alert("Неверный логин/пароль");
         }
     }
     xhr.send(formData);
